@@ -1,0 +1,31 @@
+@import "tailwindcss";
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  color: #a684ff;
+}
+
+input {
+  border: 1px solid gray;
+  border-radius: 5px;
+  padding: 0.4rem;
+  color: white;
+}
+
+button {
+  border: none;
+  border-radius: 10px;
+  padding: 0.6rem;
+  background-color: #4f40f2;
+  transition: all 0.2s ease-in-out;
+  color: white;
+}
+
+button:hover {
+  background-color: #7c71f4;
+  cursor: pointer;
+}
