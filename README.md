@@ -1,75 +1,105 @@
-# React + TypeScript + Vite
+# React Testing Library Practice
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A learning project focused on testing React applications using **Jest** and **React Testing Library**.
 
-Currently, two official plugins are available:
+The project contains practical examples of testing React components, user interactions, asynchronous operations, and API requests.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## Tech Stack
 
-## React Compiler
+* React
+* TypeScript
+* Jest
+* React Testing Library
+* Testing Library Jest DOM
+* Testing Library User Event
+* Axios
+* Tailwind CSS
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Testing Topics
 
-## Expanding the ESLint configuration
+This project covers the following testing concepts:
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+* Rendering React components
+* Finding elements with Testing Library queries
+* Testing user interactions
+* Testing input events
+* Testing component state changes
+* Testing asynchronous operations
+* Testing API requests
+* Mocking Axios requests with Jest
+* Testing loading and loaded states
+* Testing rendered API data
+* Jest mocks and mock functions
+* DOM assertions with `jest-dom`
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+## Examples
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+### Component Rendering
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
+Testing whether React components render the expected elements and content.
+
+### User Interactions
+
+Testing user actions such as:
+
+* clicking buttons
+* entering text into inputs
+* changing input values
+
+### Asynchronous Operations
+
+Testing components that load data asynchronously and updating the UI after receiving a response.
+
+### API Mocking
+
+Axios requests are mocked with Jest so tests do not depend on a real API response.
+
+Example:
+
+```typescript
+jest.mock('axios');
+
+jest.mocked(axios.get).mockResolvedValue({
+  data: [
+    {
+      id: 1,
+      username: 'Bret',
+      email: 'Sincere@april.biz',
     },
-  },
-])
-
+  ],
+});
 ```
 
-You can also install [eslint-plugin-react-x](https://npmx.dev/package/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://npmx.dev/package/eslint-plugin-react-dom) for React-specific lint rules:
+This allows the test to control the API response and verify how the component behaves.
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+## Running the Project
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+Clone the repository:
 
+```bash
+git clone https://github.com/mykytalandar/react-testing.git
 ```
+
+Install dependencies:
+
+```bash
+npm install
+```
+
+Start the development server:
+
+```bash
+npm start
+```
+
+Run tests:
+
+```bash
+npm test
+```
+
+## Purpose
+
+The main purpose of this project is to gain practical experience with **React Testing Library and Jest** and understand how to test React applications from the user's perspective.
+
+The project is part of my frontend development learning path.
