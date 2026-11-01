@@ -16,7 +16,7 @@ describe("HomePage", () => {
 
     // Перевірка наявності елемента з певним текстовим вмістом у DOM-дереві
     // Verifying the presence of an element with specific text content in the DOM tree
-    expect(screen.getByText(/hello, world!/i)).toBeInTheDocument();
+    expect(screen.getByText(/React Testing Practice/i)).toBeInTheDocument();
 
     // Перевірка наявності елемента в поточному DOM-дереві
     // Verifying the presence of the element in the current DOM tree
