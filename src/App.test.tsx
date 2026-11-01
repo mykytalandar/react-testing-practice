@@ -1,45 +1,41 @@
 import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import App from "./App";
+import { BrowserRouter, MemoryRouter } from "react-router-dom";
 
-describe("App", () => {
-  it("renders App component", () => {
-    render(<App />);
+describe("App router", () => {
+  it("router test", async () => {
+    render(<App />, { wrapper: BrowserRouter });
 
-    // Пошук DOM-елемента за унікальним атрибутом data-testid
-    // Querying the DOM element by its unique data-testid attribute
-    const button = screen.getByTestId("click-btn");
+    const homeLink = screen.getByTestId("home-link");
+    const usersLink = screen.getByTestId("users-link");
 
-    // Отримання поля введення за значенням його placeholder (без урахування регістру)
-    // Retrieving an input field by its placeholder text (case-insensitive)
-    const input = screen.getByPlaceholderText(/type here/i);
+    expect(homeLink).toBeInTheDocument();
 
-    // Перевірка наявності елемента з певним текстовим вмістом у DOM-дереві
-    // Verifying the presence of an element with specific text content in the DOM tree
-    expect(screen.getByText(/hello, world!/i)).toBeInTheDocument();
+    await userEvent.click(usersLink);
 
-    // Перевірка наявності елемента в поточному DOM-дереві
-    // Verifying the presence of the element in the current DOM tree
-    expect(button).toBeInTheDocument();
-    expect(input).toBeInTheDocument();
+    const loader = screen.getByTestId("loader-elem");
+    expect(loader).toBeInTheDocument();
+
+    // Асинхронне очікування та отримання списку користувачів у DOM-дереві після завершення завантаження даних
+    // Asynchronously waiting for and retrieving the users list element in the DOM tree after data loading completes
+    const usersList = await screen.findByTestId("users-list-elem");
+    expect(usersList).toBeInTheDocument();
+
+    // Перевірка того, що індикатор завантаження зник із DOM-дерева після появи даних
+    // Verifying that the loading indicator has disappeared from the DOM tree once the data appears
+    expect(loader).not.toBeInTheDocument();
   });
 
-  it("input event", async () => {
-    render(<App />);
-    const valueElement = screen.getByTestId("value-elem");
-    const input = screen.getByPlaceholderText(/Type here.../i);
+  it("not found page test ", () => {
+    // Рендеримо додаток в роутері з фейковим URL, щоб перевірити, як він реагує на неіснуючі сторінки
+    // Render the app within a router using a fake URL to check how it handles non-existent pages
+    render(
+      <MemoryRouter initialEntries={["/bad-url-12345"]}>
+        <App />
+      </MemoryRouter>,
+    );
 
-    // Перевірка того, що елемент не містить текстового вмісту (його вміст є порожнім)
-    // Verifying that the element does not contain any text content (its text is empty)
-    expect(valueElement).toHaveTextContent("");
-
-    // fireEvent.change(input, {
-    //   target: { value: '12345' }
-    // })
-    await userEvent.type(input, "12345");
-
-    // Отримання значення елемента та його порівняння з очікуваним числовим рядком
-    // Retrieving the element's value and comparing it against the expected numeric string
-    expect(valueElement).toHaveTextContent("12345");
+    expect(screen.getByTestId("not-found-page")).toBeInTheDocument();
   });
 });

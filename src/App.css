@@ -1,8 +1,25 @@
 .App {
-  height: 100vh;
+  min-height: 100vh;
   background: #030712;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+}
+
+.loader {
+  width: 50px;
+  --b: 8px; 
+  aspect-ratio: 1;
+  border-radius: 50%;
+  padding: 1px;
+  background: conic-gradient(#0000 10%,#a684ff) content-box;
+  -webkit-mask-composite: destination-in;
+          mask-composite: intersect;
+  animation: rotation 1s linear infinite;
+}
+
+@keyframes rotation {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }
