@@ -10,7 +10,7 @@ The project contains practical examples of testing React components, user intera
 * TypeScript
 * Vitest
 * React Testing Library
-* Testing Library Jest DOM
+* Testing Library Vitest DOM
 * Testing Library User Event
 * Axios
 * Tailwind CSS
@@ -26,10 +26,10 @@ This project covers the following testing concepts:
 * Testing component state changes
 * Testing asynchronous operations
 * Testing API requests
-* Mocking Axios requests with Jest
+* Mocking Axios requests with Vitest
 * Testing loading and loaded states
 * Testing rendered API data
-* Jest mocks and mock functions
+* Vitest mocks and mock functions
 
 ## Examples
 
@@ -51,7 +51,7 @@ Testing components that load data asynchronously and updating the UI after recei
 
 ### API Mocking
 
-Axios requests are mocked with Jest so tests do not depend on a real API response.
+Axios requests are mocked with Vitest so tests do not depend on a real API response.
 
 Example:
 
