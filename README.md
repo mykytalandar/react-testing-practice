@@ -1,6 +1,6 @@
 # React Testing Library Practice
 
-A learning project focused on testing React applications using **Jest** and **React Testing Library**.
+A learning project focused on testing React applications using **Vitest** and **React Testing Library**.
 
 The project contains practical examples of testing React components, user interactions, asynchronous operations, and API requests.
 
@@ -8,7 +8,7 @@ The project contains practical examples of testing React components, user intera
 
 * React
 * TypeScript
-* Jest
+* Vitest
 * React Testing Library
 * Testing Library Jest DOM
 * Testing Library User Event
@@ -30,7 +30,6 @@ This project covers the following testing concepts:
 * Testing loading and loaded states
 * Testing rendered API data
 * Jest mocks and mock functions
-* DOM assertions with `jest-dom`
 
 ## Examples
 
@@ -57,9 +56,9 @@ Axios requests are mocked with Jest so tests do not depend on a real API respons
 Example:
 
 ```typescript
-jest.mock('axios');
+vitest.mock("axios");
 
-jest.mocked(axios.get).mockResolvedValue({
+vitest.mocked(axios.get).mockResolvedValue({
   data: [
     {
       id: 1,
@@ -100,6 +99,6 @@ npm test
 
 ## Purpose
 
-The main purpose of this project is to gain practical experience with **React Testing Library and Jest** and understand how to test React applications from the user's perspective.
+The main purpose of this project is to gain practical experience with **React Testing Library and Vitest** and understand how to test React applications from the user's perspective.
 
 The project is part of my frontend development learning path.
