@@ -1,8 +1,8 @@
 # React Testing Library Practice
 
-A learning project focused on testing React applications using **Vitest** and **React Testing Library**.
+A learning project focused on testing React applications using **Vitest**, **React Testing Library** and **Playwright**.
 
-The project contains practical examples of testing React components, user interactions, asynchronous operations, and API requests.
+The project contains practical examples of testing React components, user interactions, asynchronous operations, API requests and end-to-end (E2E) tests.
 
 ## Tech Stack
 
@@ -12,6 +12,7 @@ The project contains practical examples of testing React components, user intera
 * React Testing Library
 * Testing Library Vitest DOM
 * Testing Library User Event
+* Playwright
 * Axios
 * Tailwind CSS
 
@@ -30,6 +31,7 @@ This project covers the following testing concepts:
 * Testing loading and loaded states
 * Testing rendered API data
 * Vitest mocks and mock functions
+* End-to-end (E2E) navigation and routing testing with Playwright
 
 ## Examples
 
@@ -91,14 +93,20 @@ Start the development server:
 npm start
 ```
 
-Run tests:
+Run unit tests:
 
 ```bash
 npm test
 ```
 
+Run Playwright tests:
+
+```bash
+npx playwright test
+```
+
 ## Purpose
 
-The main purpose of this project is to gain practical experience with **React Testing Library and Vitest** and understand how to test React applications from the user's perspective.
+The main purpose of this project is to gain practical experience with React Testing Library, Vitest, and Playwright and understand how to test React applications from both unit/component and end-to-end perspectives.
 
 The project is part of my frontend development learning path.
