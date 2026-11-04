@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import type { User } from "../../types/User";
 import axios from "axios";
 import { Loader } from "../Loader/Loader";
-import { Mail, UserRound } from "lucide-react";
+import { ChevronRight, Mail, UserRound } from "lucide-react";
 import { Link } from "react-router-dom";
 
 export const Users: React.FC = () => {
@@ -32,28 +32,42 @@ export const Users: React.FC = () => {
 
   return (
     <>
-      <div className="flex flex-col gap-5" data-testid="users-list-elem">
-        <h3 className="text-2xl font-medium">Users:</h3>
-        <ul className="flex flex-col gap-[10px]">
+      <div className="flex flex-col" data-testid="users-list-elem">
+        <h3 className="text-3xl font-extrabold">Users:</h3>
+        <span className="text-secondary-text mt-[10px]">A list of users from JSONPlaceholder API.</span>
+        <ul className="flex flex-col gap-[10px] mt-[20px]">
           {users.map((user) => (
             <li
               key={user.id}
-              className="max-w-[300px] flex flex-col border border-solid border-white rounded-[8px] gap-[5px]"
+              className="
+                max-w-[70%] flex flex-col gap-[5px]
+                border border-solid border-border rounded-[10px]
+                outline-2 outline-transparent
+                hover:outline-2 hover:outline-purple-border
+                transition-[outline-color] ease-in-out duration-300
+              "
               data-testid="user-item"
             >
-              <Link to={`/users/${user.id}`} className="p-[5px]" state={ { user } }>
-                <div className="flex flex-row items-center gap-[5px]">
-                  <UserRound size={20} />
-                  <span data-testid="username-item">
-                    <b>{user.username}</b>
-                  </span>
+              <Link
+                to={`/users/${user.id}`}
+                className="p-3 flex gap-[20px] items-center justify-between"
+                state={{ user }}
+              >
+                <div className="flex items-center gap-[20px]">
+                  <div className="bg-bg-surface py-[5px] px-[15px] rounded-[20px]">
+                    <UserRound size={50} className="text-primary-hover" />
+                  </div>
+                  <div>
+                    <span data-testid="username-item">
+                      <b>{user.name}</b>
+                    </span>
+                    <div className="flex items-center gap-[6px]">
+                      <Mail size={16} />
+                      <span data-testid="user-email-item">{user.email}</span>
+                    </div>
+                  </div>
                 </div>
-                <div className="flex flex-row items-center gap-[5px]">
-                  <Mail size={20} />
-                  <span data-testid="user-email-item">
-                    <i>{user.email}</i>
-                  </span>
-                </div>
+                <ChevronRight className=" text-primary-purple hover:text-primary-hover"/>
               </Link>
             </li>
           ))}

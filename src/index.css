@@ -1,31 +1,64 @@
 @import "tailwindcss";
 
+:root {
+  --background: #F8F7FF;
+  --surface: #ded7fa;
+  --primary-text: #111027;
+  --secondary-text: #555477;
+  --border: #DDD9F3;
+  --input-bg: #FAF9FF;
+}
+
+.dark {
+  --background: #141122;
+  --surface: #211B35;
+  --primary-text: #F8F7FF;
+  --secondary-text: #B9B2D0;
+  --border: #40365E;
+  --input-bg: #1B172D;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-surface: var(--surface);
+  --color-primary-text: var(--primary-text);
+  --color-secondary-text: var(--secondary-text);
+  --color-border: var(--border);
+  --color-input-bg: var(--input-bg);
+
+  --color-primary-purple: #7C3AED;
+  --color-primary-hover: #6D28D9;
+  --color-light-purple: #EDE9FE;
+  --color-accent-purple: #A855F7;
+  --color-purple-border: #C4B5FD;
+  --color-bg-surface: #DED7FA;
+}
+
+@layer base {
+  div,
+  body,
+  button,
+  input,
+  textarea,
+  select,
+  article {
+    transition:
+      background-color 300ms ease-in-out,
+      color 300ms ease-in-out,
+      border-color 300ms ease-in-out;
+  }
+}
+
 * {
   box-sizing: border-box;
 }
 
 body {
   margin: 0;
-  color: #a684ff;
-}
-
-input {
-  border: 1px solid gray;
-  border-radius: 5px;
-  padding: 0.4rem;
-  color: white;
+  color: var(--primary-text);
+  font-family: "Inter", sans-serif;
 }
 
 button {
-  border: none;
-  border-radius: 10px;
-  padding: 0.6rem;
-  background-color: #4f40f2;
-  transition: all 0.2s ease-in-out;
-  color: white;
-}
-
-button:hover {
-  background-color: #7c71f4;
   cursor: pointer;
 }
